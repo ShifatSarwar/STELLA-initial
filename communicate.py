@@ -1,11 +1,13 @@
 import pyttsx3
 engine = pyttsx3.init()
 
+#It allows Speak rather than print out words
 def speak(command):
     print(command)
     engine.say(command)
     engine.runAndWait()
 
+#Gets value from requirements.txt about current saved voice
 def getValueID():
     with open('requirements.txt') as f:
         lines = f.readlines()
@@ -13,6 +15,7 @@ def getValueID():
             listval=line.split()
             return int(listval[2])
 
+#Updates requirements.txt withh updated voice information
 def setValueID(turn):
     voices = engine.getProperty('voices')
     infoFile = open("requirements.txt", "r")

@@ -5,21 +5,26 @@ import programExit
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 
-def vChange(turn):
+#This code basically runs until user confirms a voice thorugh command
+
+def vChange():
+    turn = communicate.getValueID()
+    #turn will start from the turn in file
     if(turn >= len(voices)):
-        communicate.speak("No more voices left. Do you want to try again?")
-        programExit.pExit()
+        turn=0
     else:
         turn+=1
         communicate.setValueID(turn)
         communicate.speak("Do you like this voice?")
         engine.setProperty('voice', voices[turn].id)
         command = listen.startListening()
+        #confirm voice
         if ('yes' in command):
             communicate.speak("I love my new voice. Thank you, Shifat.")
             print("Updating Voice Information")
             communicate.setValueID(turn)
-            programExit.pExit()
+            programExit.sExit()
+
         else:
             vChange(turn) 
 
