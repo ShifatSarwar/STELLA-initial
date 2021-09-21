@@ -24,10 +24,10 @@ def startListening():
             response["error"] = "can't reach google"
         except sr.UnknownValueError:
             response["error"] = "couldn't hear you"
-
         if(response["success"] == True):
             print(response["voicedata"])
             return (response["voicedata"]).lower()
         else:
+            print(response["error"])
             programExit.pExit()
         
