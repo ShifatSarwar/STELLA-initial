@@ -7,6 +7,7 @@ Strategic Transitional Emotional Layered Logical Assistant (STELLA)
 * Open and play in YouTube
 * Tell curent time
 * Perform Basic Calculations
+* Understand and Communicate based on emotions recognized from speech text
 * Fun Communications
 * Change voice only with google voices not cloud voice
 
