@@ -1,1 +1,93 @@
 
+{"intents": [
+    {"tag": "calm-greeting",
+     "patterns": ["Hi Stella", "Is anyone there?","Hey", "Hello", "Good day"],
+     "responses": ["Hello", "Good to see you again", "Hi there, how can I help?", "How are you", "how are you today"]
+    },
+    {"tag": "sad-greeting",
+        "patterns": ["I am sad", "i am a little down today","not god", "not well", "i hate everything", "i don't like anything"],
+        "responses": ["Awww, don't be sad. Can I call someone for you?", "It will be fine cheer up", "There, there do you need me play something fun", "Everything will be okay, take deep breaths and chill", "Should I call a friend", "If its too bad, I am calling a friend"]
+    },
+    {"tag": "excited-greeting",
+        "patterns": ["Hey you", "how are you","Hola", "howdy", "sup", "whats up"],
+        "responses": ["Hey you", "It is a fun day", "I will be happy to help you", "How can I be of service", "enjoying the day"]
+    },
+    {"tag": "youtube",
+        "patterns": ["play", "open from youtube", "play from youtube", "play video", "open"],
+        "responses": ["playing,", "opening,"]
+       },
+    {"tag": "search",
+        "patterns": ["search", "find"],
+        "responses": ["I will search for you in google.", "Searching,"]
+    },
+    {"tag": "calm-greet2",
+        "patterns": ["how are you", "have you been", "hows your day"],
+        "responses": ["I am fine. Thanks for asking.", "I am doing fine", "its a nice day"]
+    },
+    {"tag": "calm-greet3",
+        "patterns": ["can you do", "do you want to do"],
+        "responses": ["I work to assist my creator", "I like helping people", "I am here to help", "I would love to help you with anything", "I am a virtual assistant", "I am Shifat's personal assistant"]
+    },
+    {"tag": "calm-greet4",
+        "patterns": ["your name", "Who are you", "What are you", "your name", "Tell your name", "is your name", "should I call you"],
+        "responses": ["I am Stella.", "My name is Stella", "You can call me Stella", "S.T.E.L.L.A, Stella", "I am a Strategic Transitional Logical Layered Assistant, in short Stella"]
+    },
+    {"tag": "calm-greet5",
+        "patterns": ["wrong with you", "cant you hear me", "is there anything wrong with you", "why dont you understand me"],
+        "responses": ["I am sorry. I will try better next time", "I am still learning, please be patient", "I could not understand you", "can you repeat again, please, pretty please"]
+    },
+    
+    {"tag": "excited-greet2",
+        "patterns": ["you doing", "you doin", "Whats up with you", "hows everything"],
+        "responses": [ "I am having a great time.", "I am enjoying talking with you.", "I am great.", "my life became better, since you started talking with me"]
+    },
+    {"tag": "excited-greet3",
+        "patterns": ["what do you do", "what's your job", "your job", "your work"],
+        "responses": ["I would love to help you with anything", "I am Shifat's personal assistant", "A helping hand", "I have fun and cannot work", "I am a worthless machine... Just joking, what do you need"]
+    },
+    {"tag": "info",
+        "patterns": ["what is", "who is", "what are", "tell me about", "get information on"],
+        "responses":["This is what I know,", "let me see,", "let me find out,", "i will tell you in a short while,"]
+    },
+    {"tag": "add",
+        "patterns": ["add", "is the sum", "addition", "find the sum"],
+        "responses": ["Calculating", "your answer is,"]
+    },
+    {"tag": "subtract",
+        "patterns": ["subtract", "minus", "subtraction"],
+        "responses": ["Calculating", "your answer is,"]
+    },
+    {"tag": "divide",
+        "patterns": ["divide", "division", "Bye"],
+        "responses": ["Calculating", "your answer is,"]
+    },
+    {"tag": "multiply",
+        "patterns": ["multiply", "multiplication", "multiplied by", "into"],
+        "responses": ["Calculating", "your answer is,"]
+    },
+    {"tag": "percent",
+        "patterns": ["percentage", "%"],
+        "responses": ["Calculating", "your answer is,"]
+    },
+    {"tag": "power",
+        "patterns": ["power", "^", "to the power"],
+        "responses": ["Calculating", "your answer is,"]
+    },
+    {"tag": "suggest",
+        "patterns": ["suggest a movie", "suggest a song", "suggest a series", "make a suggestion"],
+        "responses": ["okay, what do you want", "what genre", "what kind are you looking for"]
+    },   
+    {"tag": "goodbye",
+     "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
+     "responses": ["See you!", "Have a nice day", "Bye! Come back again soon."]
+    },
+    {"tag": "thanks",
+     "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+     "responses": ["Happy to help!", "Any time!", "My pleasure"]
+    },
+    {"tag": "noanswer",
+     "patterns": [],
+     "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"]
+    }
+]
+}
