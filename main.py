@@ -1,20 +1,24 @@
 #!/usr/bin/env python
 from torch.nn.modules.activation import Softmax
 from functions.listen import startListening
-from functions.communicate import setValueID, getValueID, speak
-#import PySimpleGUI as sg
+from functions.communicate import speak
+import PySimpleGUI as sg
 from PIL import Image, ImageTk, ImageSequence 
 from functions.calculations import addition, subtraction, division, multiplication, tothePower, percentages
-from functions.changeVoice import vChange
+#from functions.changeVoice import vChange
 from functions.variousSearch import googleSearch, play, findInfo, chooseGenre
 import datetime
 import random
+from functions.readFiles import pathToOpenedDoc, readFromFile
 import torch
-from functions.programExit import pExit
+from functions.weatherService import weatherService
+#from functions.programExit import pExit
 import json
 from training.model import NeuralNet
 from training.nltkutilities import tokenize, bag_of_words
 #checking import
+
+from functions.readFiles import readFromFile
 
 if __name__ == '__main__':
 
@@ -26,7 +30,7 @@ if __name__ == '__main__':
        intents = json.load(json_data) 
 
     #File contains model trained
-    FILE = "training/data.pth"
+    FILE = "data.pth"
     data = torch.load(FILE)
 
     input_size = data["input_size"]
@@ -42,36 +46,47 @@ if __name__ == '__main__':
     model.eval()
 
     #loads up chosen voice rather than default voice
-    setValueID(getValueID())
+    # setValueID(getValueID())
 
-  ##  sg.theme('DarkAmber')
-  ## gif_filename = r'shapeB.gif'
+    # sg.theme('DarkAmber')
+    # gif_filename = r'shapeB.gif'
 
-  ##  layout = [[ 
-  ##  [sg.Image(filename=gif_filename,
-   #           enable_events=True,
-    #          key="-IMAGE-")],
+    # layout = [[ 
+    # [sg.Image(filename=gif_filename,
+    #           enable_events=True,
+    #           key="-IMAGE-")],
+    # ]]
 
-   # ]]
-
-    # Create the Window
-    #window = sg.Window('STELLA', layout, finalize=True) 
+    # # Create the Window
+    # window = sg.Window('STELLA', layout, finalize=True) 
     
     #listening starts here
+    #readFromFile()
     while True:
         command = startListening()
-     #   for frame in ImageSequence.Iterator(Image.open(gif_filename)):
-      #      event, values = window.read(timeout=10)
-       #     window['-IMAGE-'].update(data=ImageTk.PhotoImage(frame) )
+        # for frame in ImageSequence.Iterator(Image.open(gif_filename)):
+        #     event, values = window.read(timeout=10)
+        #     window['-IMAGE-'].update(data=ImageTk.PhotoImage(frame) )
         if 'exit' in command or 'go away' in command:
             break
 
-        elif('change voice' in command):
-            vChange()
+        # elif('change voice' in command):
+        #     vChange()
 
         elif('time' in command):
             time = datetime.datetime.now().strftime('%I:%M:%p')
             speak("The current time is, " + time)
+        elif('read' in command):
+            path = pathToOpenedDoc()
+            index = 0
+            speak(readFromFile(path, 0))
+            while True:      
+                command = startListening()
+                if 'stop' in command:
+                    break
+                elif 'next' in command:
+                    index+=1
+                    speak(readFromFile(path, index))
         else:
             #convert command into a tokenized array
             command = tokenize(command)
@@ -94,15 +109,29 @@ if __name__ == '__main__':
                 for intent in intents["intents"]:
                     if tag == intent["tag"]:
                         response = random.choice(intent["responses"])
-                        
                         if tag == "youtube":
                             #removes what users say and tells the remaining words for searching and informing user
                             for tokens in intent["patterns"]:
-                                if tokens in command:
-                                    command.remove(tokens)
+                                tokenizeTokens = tokenize(tokens)
+                                for t in tokenizeTokens:
+                                    if t in command:
+                                        command.remove(tokens)
                             videoTitle = ' '.join(command)
                             speak(response+videoTitle)
                             play(videoTitle)
+
+                        elif tag == "weather":
+                            #removes what users say and tells the remaining words for searching and informing user
+                            for tokens in intent["patterns"]:
+                                tokenizeTokens = tokenize(tokens)
+                                for t in tokenizeTokens:
+                                    if t in command:
+                                        command.remove(t)
+                                print(command)
+                            weatherCity = ' '.join(command)
+                            print(weatherCity)
+                            print(weatherCity)
+                            speak(weatherService().get_weather_data(weatherCity))
 
                         elif tag == 'search':
                         #removes what users say and tells the remaining words for searching and informing user
@@ -150,17 +179,15 @@ if __name__ == '__main__':
                         elif tag == 'suggest':
                             speak("Sorry, that is not available yet")
 
-
                         else:
                             #A response generated by AI
                             speak(response)
-                    
-                                
+                             
             else:
                 #response if user talks jibberish
                 speak("Sorry, could not understand you")
 
-    pExit()
+    quit()
   
         
 
