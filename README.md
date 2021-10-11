@@ -10,11 +10,12 @@ Strategic Transitional Emotional Layered Logical Assistant (STELLA)
 * Understand and Communicate based on emotions recognized from speech text
 * Fun Communications
 * Change voice only with google voices not cloud voice
+* Read on window documents
+* Tell Weather at any place
 
 ### Possible Future Integrations
 * Recognize songs
 * Play Spotify
-* Read on window documents
 * Tell a countdown calculated from set alarm or meeting
 * User Recognition
 * Long Conversation 
