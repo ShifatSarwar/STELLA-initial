@@ -1,7 +1,6 @@
 import pyttsx3
-import communicate
-import listen
-import programExit
+import functions.communicate as communicate
+import functions.listen as listen
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 
@@ -23,7 +22,7 @@ def vChange():
             communicate.speak("I love my new voice. Thank you, Shifat.")
             print("Updating Voice Information")
             communicate.setValueID(turn)
-            programExit.sExit()
+            quit()
 
         else:
             vChange(turn) 
